@@ -129,8 +129,12 @@ server.put("/api/users/:id", (req, res) => {
     users[index] = updates;
     res.status(200).json(users[index]);
   } else if (!updates.name || !updates.bio) {
-    res.status(400).json({ errorMessage: "400 BABY!" });
+    res
+      .status(400)
+      .json({ errorMessage: "Please provide name and bio for the user." });
   } else if (updates.id !== id) {
-    res.status(404).json({ errorMessage: "SORRY BITCH!" });
+    res
+      .status(404)
+      .json({ errorMessage: "The user with the specified ID does not exist." });
   }
 });
